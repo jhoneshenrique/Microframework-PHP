@@ -1,3 +1,7 @@
+<?php
+    include './../app/Libraries/Rota.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,6 +10,8 @@
     <title>Curso PHP 7 e MVC</title>
 </head>
 <body>
-    
+    <?php
+        $rotas = new Rota;
+    ?>
 </body>
 </html>
