@@ -1,9 +1,25 @@
 <?php
-    include './../app/Libraries/Rota.php';
-    include './../app/Libraries/Controller.php';
+    include './../app/autoload.php';
     include './../app/configucacao.php';
-    include './../app/Libraries/Database.php';
+    
     $db = new Database;
+
+    /** 
+    $usuarioId = 1;
+    $titulo = 'Post';
+    $texto = 'Editado';
+    $id = 2; 
+    $db->query("SELECT * from post");
+    
+    //$db->resultado();
+    //echo $db->resultado()->titulo;
+
+    foreach($db->resultados() as $post){
+        echo $post->titulo.'<br>';
+    }
+
+    echo '<hr>Total de Resultados: '.$db->totalResultados(); */
+   
    
 ?>
 
