@@ -4,25 +4,40 @@
             <h2>Cadastre-se</h2>
             <small>Preencha o formulario abaixo</small>
 
-            <form name="cadastrar" method="POST"caction="">
+            <!-- Informar o destino no Action-->
+            <form name="cadastrar" method="POST" action="<?= URL?>/usuarios/cadastrar">
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome: <sup class="text-danger">*</sup></label>
-                    <input type="texto" class="form-control" name="nome" id="nome" required> 
+                                                    <!--Condicional se existe erro. Caso exista, chama classe de erro do Bootstrap -->
+                    <input type="texto" class="form-control <?=$dados['nome_erro']? 'is-invalid' : '' ?>" name="nome" id="nome" value="<?=$dados['nome']?>">
+                    <!-- Div que e carregada quando ha o erro. So aparece se is-invalid e ativado-->
+                    <div class="invalid-feedback">
+                        <?=$dados['nome_erro']?>
+                    </div> 
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">E-mail: <sup class="text-danger">*</sup></label>
-                    <input type="email" class="form-control" name="nome" id="nome" required>
+                    <input type="text" class="form-control <?=$dados['email_erro']? 'is-invalid' : '' ?>" name="email" id="email" value="<?=$dados['email']?>">
+                    <div class="invalid-feedback">
+                        <?=$dados['email_erro']?>
+                    </div> 
                 </div>
 
                 <div class="mb-3">
                     <label for="senha" class="form-label">Senha: <sup class="text-danger">*</sup></label>
-                    <input type="password" class="form-control" name="senha" id="senha" required>
+                    <input type="password" class="form-control <?=$dados['senha_erro']? 'is-invalid' : '' ?>" name="senha" id="senha" value="<?=$dados['senha']?>">
+                    <div class="invalid-feedback">
+                        <?=$dados['senha_erro']?>
+                    </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="confirmar_senha" class="form-label">Confirme a Senha: <sup class="text-danger">*</sup></label>
-                    <input type="password" class="form-control" name="confirma_senha" id="confirma_senha" required>
+                    <input type="password" class="form-control <?=$dados['confirma_senha_erro']? 'is-invalid' : '' ?>" name="confirma_senha" id="confirma_senha" value="<?=$dados['confirma_senha']?>">
+                    <div class="invalid-feedback">
+                        <?=$dados['confirma_senha_erro']?>
+                    </div>
                 </div>
 
                 <div class="row">
