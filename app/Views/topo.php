@@ -15,11 +15,13 @@
         </li>
        
       </ul>
-      <form class="d-flex">
+      <span class="navbar-text">
         <!--Link para a View cadastrar --> 
         <a class="btn btn-info" href="<?=URL?>/usuarios/cadastrar" data-tooltip="tooltip" title="Não tem uma conta? Cadastre-se">Cadastre-se</a>
+        <!--Link para a View login --> 
+        <a class="btn btn-info" href="<?=URL?>/usuarios/login" data-tooltip="tooltip" title="login">Login</a>
         
-      </form>
+      </span>
     </div>
   </div>
 </nav>

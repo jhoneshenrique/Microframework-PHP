@@ -1,7 +1,10 @@
 <div class="col-xl-4 col-md6 mx-auto p-5">
     <div class="card">
+        <div class="card-header bg-secondary text-white">
+              <h2>Cadastre-se</h2>
+        </div>
          <div class="card-body">
-            <h2>Cadastre-se</h2>
+            
             <small>Preencha o formulario abaixo</small>
 
             <!-- Informar o destino no Action-->
@@ -41,11 +44,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-6">
                         <input type="submit" value="Cadastrar" class="btn btn-info btn-block">
                     </div>
-                    <div class="col">
-                        <a href="$">Você tem uma conta? Faça o login!</a>
+                    <div class="col-md-6">
+                        <a href="#">Você tem uma conta? Faça o login!</a>
                     </div>
                 </div>
             </form>
