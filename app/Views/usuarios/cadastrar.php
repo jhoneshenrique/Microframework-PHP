@@ -3,8 +3,7 @@
         <div class="card-header bg-secondary text-white">
               <h2>Cadastre-se</h2>
         </div>
-         <div class="card-body">
-            
+         <div class="card-body">            
             <small>Preencha o formulario abaixo</small>
 
             <!-- Informar o destino no Action-->

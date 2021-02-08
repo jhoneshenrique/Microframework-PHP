@@ -35,7 +35,7 @@ class Usuario{
 
     //Checa login
     public function checarLogin($email,$senha){
-        $this->db->query("SELECT email,senha FROM usuario WHERE email = :e ");
+        $this->db->query("SELECT * FROM usuario WHERE email = :e ");
         $this->db->bind(":e", $email);
         if($this->db->resultado()){
             $resultado = $this->db->resultado();

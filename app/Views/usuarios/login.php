@@ -4,6 +4,8 @@
               <h2>Login</h2>
         </div>
          <div class="card-body">
+            <!--Chama o metodo mensagem para exibir a mensagem na tela -->
+            <?= Sessao::mensagem('usuario')?>
             
             <small class="text-muted">Informe seus dados para Login</small>
 

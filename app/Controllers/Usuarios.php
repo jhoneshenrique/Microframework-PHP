@@ -57,7 +57,9 @@ class Usuarios extends Controller
 
                     //Cadastra
                     if ($this->usuarioModel->armazenar($dados)) {
-                        echo "Cadastro realizado com sucesso";
+                        //Clama metodo estatico mensagem da classe Sessao
+                        Sessao::mensagem('usuario','usuario criado com sucesso');
+                        header('Location: '.URL.'');
                     } else {
                         die("Erro ao armazenar");
                     }
@@ -114,12 +116,13 @@ class Usuarios extends Controller
                     $dados['email_erro'] = 'E-mail invalido';
 
                 } else {
-                    $checarLogin = $this->usuarioModel->checarLogin($formulario['email'],$formulario['senha']);
+                    $usuario = $this->usuarioModel->checarLogin($formulario['email'],$formulario['senha']);
 
-                    if($checarLogin){
-                        echo 'Usuario Logado, pode criar a sessao <hr>';
+                    if($usuario){
+                        $this->criarSessaoUsuario($usuario);
                     }else{
-                        echo 'Usuario ou senha invalidos';
+                        //Clama metodo estatico mensagem da classe Sessao
+                        Sessao::mensagem('usuario','usuario e senha invalido','alert alert-danger');
                     }
                 }
             }
@@ -134,5 +137,23 @@ class Usuarios extends Controller
         }
         //Mantem os dados que foram digitados
         $this->view('usuarios/login', $dados);
+    }
+
+    //metodo para criar sessao
+    public function criarSessaoUsuario($usuario){
+        $_SESSION['usuario_id'] = $usuario->id;
+        $_SESSION['usuario_nome'] = $usuario->nome;
+        $_SESSION['usuario_email'] = $usuario->email;
+    }
+
+    //Destruindo a sessao
+    public function sair(){
+        unset($_SESSION['usuario_id']);
+        unset($_SESSION['usuario_nome']);
+        unset($_SESSION['usuario_email']);
+
+        session_destroy();
+
+        header('Location:'.URL.'');
     }
 }
