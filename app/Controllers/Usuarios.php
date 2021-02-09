@@ -59,7 +59,7 @@ class Usuarios extends Controller
                     if ($this->usuarioModel->armazenar($dados)) {
                         //Clama metodo estatico mensagem da classe Sessao
                         Sessao::mensagem('usuario','usuario criado com sucesso');
-                        header('Location: '.URL.'');
+                        Url::redirecionar('usuarios/login');
                     } else {
                         die("Erro ao armazenar");
                     }
@@ -144,6 +144,7 @@ class Usuarios extends Controller
         $_SESSION['usuario_id'] = $usuario->id;
         $_SESSION['usuario_nome'] = $usuario->nome;
         $_SESSION['usuario_email'] = $usuario->email;
+        Url::redirecionar('posts');
     }
 
     //Destruindo a sessao
@@ -154,6 +155,6 @@ class Usuarios extends Controller
 
         session_destroy();
 
-        header('Location:'.URL.'');
+        Url::redirecionar('usuarios/login');
     }
 }
