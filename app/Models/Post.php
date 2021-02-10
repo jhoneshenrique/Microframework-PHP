@@ -17,7 +17,9 @@ class Post{
          usuario.criado_em as usuarioDataCadastro
          FROM post
          INNER JOIN usuario ON 
-         post.usuario_id = usuario.id");
+         post.usuario_id = usuario.id
+         ORDER BY post.id DESC
+         ");
         return $this->db->resultados();
     }
 
@@ -25,6 +27,28 @@ class Post{
     public function armazenar($dados){
         $this->db->query("INSERT INTO post(usuario_id, titulo,texto) VALUES (:usuario_id,:titulo, :texto)");
         $this->db->bind("usuario_id", $dados['usuario_id']);
+        $this->db->bind("titulo", $dados['titulo']);
+        $this->db->bind("texto", $dados['texto']);
+
+        if($this->db->executa()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //Ler pos individualmente
+    public function lerPostPorId($id){
+        $this->db->query("SELECT * FROM post WHERE id = :id");
+        $this->db->bind('id',$id);
+        return $this->db->resultado();
+    }
+
+    //update
+    public function atualizar($dados){
+        $this->db->query("UPDATE post SET titulo = :titulo, texto = :texto WHERE id = :id");
+
+        $this->db->bind("id", $dados['id']);
         $this->db->bind("titulo", $dados['titulo']);
         $this->db->bind("texto", $dados['texto']);
 

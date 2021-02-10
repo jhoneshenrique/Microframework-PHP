@@ -17,4 +17,13 @@
             return false;
         }
     }
+
+    public static function dataBr($data){
+        if(isset($data)){
+            return date('d-m-Y H:i', strtotime($data));
+        }else{
+            return false;
+        }
+    }
+
  }
