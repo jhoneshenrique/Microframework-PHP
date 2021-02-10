@@ -4,6 +4,11 @@
        
         //Metodo que carrega a pagina home 
         public function index(){
+            //Caso o usuario esteja logado, ele e redirecionado para a pagina de posts
+            if(Sessao::estaLogado()){
+                Url::redirecionar('posts');
+            }  
+
             $dados = [
                 'titulo'=>'Pagina Inicial',
                 'descricao'=>'curso php 7'

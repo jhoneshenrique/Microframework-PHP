@@ -5,11 +5,19 @@
             if(!Sessao::estaLogado()){
                 Url::redirecionar('usuarios/login');
             }  
+
+            //Instancia um objeto do Model usuario
+            $this->postModel = $this->model('Post');
         }
 
 
         public function index(){
-            $this->view('posts/index');
+
+            //Recebe os dados vindos do Model
+            $dados = [
+                'posts' => $this->postModel->lerPosts()
+            ];
+            $this->view('posts/index',$dados);
         }
 
 
@@ -22,7 +30,8 @@
         if (isset($formulario)) { //Caso exista, o array dados recebe os dados passados pelo usuario
             $dados = [
                 'titulo' => trim($formulario['titulo']),
-                'texto' => trim($formulario['texto'])
+                'texto' => trim($formulario['texto']),
+                'usuario_id' => $_SESSION['usuario_id']
             ];
 
             //Validacao para confirmar se nao ha nenhum campo em branco
@@ -41,7 +50,14 @@
         
                    
 
-                    echo 'pode cadastrar o post';
+                     //Cadastra
+                     if ($this->postModel->armazenar($dados)) {
+                        //Clama metodo estatico mensagem da classe Sessao
+                        Sessao::mensagem('post','post cadastrado com sucesso');
+                        Url::redirecionar('posts');
+                    } else {
+                        die("Erro ao armazenar posts");
+                    }
                 
             }
 
