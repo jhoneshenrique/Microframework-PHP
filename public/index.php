@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include './../app/php_error.php';
     include './../app/autoload.php';
     include './../app/configucacao.php';
     

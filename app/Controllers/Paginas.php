@@ -23,4 +23,12 @@
             ];
             $this->view('paginas/sobre',$dados);
         }
+
+         //Metodo que carrega a pagina sobre
+         public function error(){
+            $dados = [
+                'tituloPagina'=>'Erro página não encontrada'
+            ];
+            $this->view('paginas/error',$dados);
+        }
     }

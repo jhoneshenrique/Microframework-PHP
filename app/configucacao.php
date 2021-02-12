@@ -1,4 +1,16 @@
 <?php
+//Definir constantes no array
+
+define('DB',[
+    'HOST' => 'localhost',
+    'USUARIO' => 'root',
+    'SENHA' => '',
+    'BANCO' => 'framework',
+    'PORTA' => '3306'
+]);
+
+
+
 //dirname elimina o diretorio atual
 //Define define uma constante
 define('APP',dirname(__FILE__));
